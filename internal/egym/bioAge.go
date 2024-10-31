@@ -1,5 +1,25 @@
 package egym
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
+func (c *EgymClient) GetBioAge() (*GetBioAgeResponse, error) {
+	url := fmt.Sprintf("%s/analysis/api/v1.0/exercisers/%s/bioage", c.apiUrl, c.userId)
+	body, err := c.fetch(url, 1)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetBioAgeResponse
+	err = json.Unmarshal(body, &response)
+	if err != nil {
+		return nil, err
+	}
+	return &response, nil
+}
+
 type GetBioAgeResponse struct {
 	TotalDetails struct {
 		TotalBioAge BioAgeDetail `json:"totalBioAge"`
@@ -12,8 +32,6 @@ type GetBioAgeResponse struct {
 	} `json:"muscleDetails"`
 	MetabolicDetails struct {
 		MetabolicAge BioAgeDetail `json:"metabolicAge"`
-		// BodyFat      BioAgeDetail `json:"bodyFat"`
-		// BMI          BioAgeDetail `json:"bmi"`
 	} `json:"metabolicDetails"`
 	CardioDetails struct {
 		CardioAge BioAgeDetail `json:"cardioAge"`

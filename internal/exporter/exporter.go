@@ -17,10 +17,12 @@ type EgymExporter struct {
 
 func (c *EgymExporter) Describe(ch chan<- *prometheus.Desc) {
 	c.describeBioAgeMetrics(ch)
+	c.describeActivityLevelMetrics(ch)
 }
 
 func (c *EgymExporter) Collect(ch chan<- prometheus.Metric) {
 	c.collectBioAgeMetrics(ch)
+	c.collectActivityLevelMetrics(ch)
 }
 
 func NewEgymExporter(client *egym.EgymClient) *EgymExporter {

@@ -105,8 +105,15 @@ docker run \
 |egym_bio_age_muscles_core|Core muscles bio age|
 |egym_bio_age_muscles_lower_body|Lower body muscles bio age|
 |egym_bio_age_muscles_upper_body|Upper body muscles bio age|
+|egym_activity_points|Amount of activity points within the current period|
+|egym_activity_points_goal|Amount of activity points to reach the next activity level|
+|egym_activity_maintain_points|Amount of required activity points to maintain the activity level|
 
 ## Release Notes
+
+### 0.2.0
+
+Added metrics about the users activity level.
 
 ### 0.1.0
 

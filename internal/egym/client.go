@@ -102,18 +102,3 @@ func (c *EgymClient) fetch(url string, retryCount int) ([]byte, error) {
 
 	return io.ReadAll(resp.Body)
 }
-
-func (c *EgymClient) GetBioAge() (*GetBioAgeResponse, error) {
-	url := fmt.Sprintf("%s/analysis/api/v1.0/exercisers/%s/bioage", c.apiUrl, c.userId)
-	body, err := c.fetch(url, 1)
-	if err != nil {
-		return nil, err
-	}
-
-	var response GetBioAgeResponse
-	err = json.Unmarshal(body, &response)
-	if err != nil {
-		return nil, err
-	}
-	return &response, nil
-}
