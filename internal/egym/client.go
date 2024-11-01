@@ -29,7 +29,7 @@ func NewEgymClient(brand, username, password string) (*EgymClient, error) {
 		Username: username,
 		Password: password,
 		defaultHeaders: map[string]string{
-			"x-np-user-agent":  "clientType=MOBILE_DEVICE; devicePlatform=IOS; ...",
+			"x-np-user-agent":  "clientType=MOBILE_DEVICE; devicePlatform=IOS; deviceUid=0B7F0E30-9598-43EF-8DA6-7018BD289B3C; applicationName=EGYM Fitness; applicationVersion=3.11; applicationVersionCode=853; containerName=NetpulseFitness;",
 			"user-agent":       "NetpulseFitness/3.11 (com.netpulse.netpulsefitness; build:853; iOS 17.2.0) Alamofire/5.4.4",
 			"x-np-app-version": "3.11",
 			"Accept":           "application/json",

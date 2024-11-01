@@ -111,9 +111,13 @@ docker run \
 
 ## Release Notes
 
+### 0.3.0
+
+Added body metrics 
+
 ### 0.2.0
 
-Added metrics about the users activity level.
+Added metrics about the users activity level
 
 ### 0.1.0
 

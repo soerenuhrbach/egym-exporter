@@ -7,27 +7,27 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-const activity_namespace = "activity"
+const activityNamespace = "activity"
 
 var (
-	activity_labels = []string{"activity_level", "days_left"}
+	activityLabels = []string{"activity_level", "days_left"}
 
 	activityPoints = prometheus.NewDesc(
-		prometheus.BuildFQName(namespace, activity_namespace, "points"),
+		prometheus.BuildFQName(namespace, activityNamespace, "points"),
 		"Current activity level",
-		append(labels, activity_labels...),
+		append(labels, activityLabels...),
 		nil,
 	)
 	activityMaintainPoints = prometheus.NewDesc(
-		prometheus.BuildFQName(namespace, activity_namespace, "maintain_points"),
+		prometheus.BuildFQName(namespace, activityNamespace, "maintain_points"),
 		"Current activity level",
-		append(labels, activity_labels...),
+		append(labels, activityLabels...),
 		nil,
 	)
 	activityGoal = prometheus.NewDesc(
-		prometheus.BuildFQName(namespace, activity_namespace, "points_goal"),
+		prometheus.BuildFQName(namespace, activityNamespace, "points_goal"),
 		"Current activity level",
-		append(labels, activity_labels...),
+		append(labels, activityLabels...),
 		nil,
 	)
 )

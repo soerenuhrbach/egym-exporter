@@ -15,14 +15,16 @@ type EgymExporter struct {
 	client *egym.EgymClient
 }
 
-func (c *EgymExporter) Describe(ch chan<- *prometheus.Desc) {
-	c.describeBioAgeMetrics(ch)
-	c.describeActivityLevelMetrics(ch)
+func (e *EgymExporter) Describe(ch chan<- *prometheus.Desc) {
+	e.describeBioAgeMetrics(ch)
+	e.describeActivityLevelMetrics(ch)
+	e.describeBodyMetrics(ch)
 }
 
-func (c *EgymExporter) Collect(ch chan<- prometheus.Metric) {
-	c.collectBioAgeMetrics(ch)
-	c.collectActivityLevelMetrics(ch)
+func (e *EgymExporter) Collect(ch chan<- prometheus.Metric) {
+	e.collectBioAgeMetrics(ch)
+	e.collectActivityLevelMetrics(ch)
+	e.collectBodyMetrics(ch)
 }
 
 func NewEgymExporter(client *egym.EgymClient) *EgymExporter {
