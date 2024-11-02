@@ -5,13 +5,11 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-const flexibilityNamespace = "flexibility"
-
 var (
 	flexibilityLabels = []string{"type", "source", "source_label", "interpretation", "unit"}
 
 	flexibilityMetric = prometheus.NewDesc(
-		prometheus.BuildFQName(namespace, flexibilityNamespace, "metrics"),
+		prometheus.BuildFQName(namespace, "", "flexibility"),
 		"Flexibility metrics",
 		append(labels, flexibilityLabels...),
 		nil,

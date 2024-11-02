@@ -7,13 +7,11 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-const bodyNamespace = "body"
-
 var (
 	bodyLabels = []string{"type", "source", "source_label", "unit"}
 
 	bodyMetric = prometheus.NewDesc(
-		prometheus.BuildFQName(namespace, bodyNamespace, "metrics"),
+		prometheus.BuildFQName(namespace, "", "body"),
 		"Measured body metric",
 		append(labels, bodyLabels...),
 		nil,

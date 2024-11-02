@@ -5,13 +5,11 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-const strengthNamespace = "strength"
-
 var (
 	strengthLabels = []string{"source", "source_label", "body_region", "muscle", "exercise", "exercise_code", "progress"}
 
 	strengthMetrics = prometheus.NewDesc(
-		prometheus.BuildFQName(namespace, strengthNamespace, "metrics"),
+		prometheus.BuildFQName(namespace, "", "strength"),
 		"Strength metrics",
 		append(labels, strengthLabels...),
 		nil,
