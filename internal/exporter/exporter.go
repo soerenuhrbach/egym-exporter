@@ -19,12 +19,14 @@ func (e *EgymExporter) Describe(ch chan<- *prometheus.Desc) {
 	e.describeBioAgeMetrics(ch)
 	e.describeActivityLevelMetrics(ch)
 	e.describeBodyMetrics(ch)
+	e.describeStrengthMetrics(ch)
 }
 
 func (e *EgymExporter) Collect(ch chan<- prometheus.Metric) {
 	e.collectBioAgeMetrics(ch)
 	e.collectActivityLevelMetrics(ch)
 	e.collectBodyMetrics(ch)
+	e.collectStrengthMetrics(ch)
 }
 
 func NewEgymExporter(client *egym.EgymClient) *EgymExporter {

@@ -1,6 +1,7 @@
 package egym
 
 import (
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -21,9 +22,16 @@ type EgymClient struct {
 	defaultHeaders map[string]string
 	loginUrl       string
 	apiUrl         string
+
+	httpClient *http.Client
 }
 
 func NewEgymClient(brand, username, password string) (*EgymClient, error) {
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
+	httpClient := &http.Client{Transport: tr}
+
 	c := &EgymClient{
 		Brand:    brand,
 		Username: username,
@@ -34,8 +42,9 @@ func NewEgymClient(brand, username, password string) (*EgymClient, error) {
 			"x-np-app-version": "3.11",
 			"Accept":           "application/json",
 		},
-		loginUrl: fmt.Sprintf("https://%s.netpulse.com/np/exerciser/login", brand),
-		apiUrl:   "https://mobile-api.int.api.egym.com",
+		loginUrl:   fmt.Sprintf("https://%s.netpulse.com/np/exerciser/login", brand),
+		apiUrl:     "https://mobile-api.int.api.egym.com",
+		httpClient: httpClient,
 	}
 	loggedIn, err := c.login()
 	if err != nil || !loggedIn {
@@ -62,7 +71,7 @@ func (c *EgymClient) login() (bool, error) {
 	}
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
-	resp, err := http.DefaultClient.Do(req)
+	resp, err := c.httpClient.Do(req)
 	if err != nil {
 		return false, err
 	}
@@ -89,7 +98,7 @@ func (c *EgymClient) fetch(url string, retryCount int) ([]byte, error) {
 		req.Header.Set(k, v)
 	}
 
-	resp, err := http.DefaultClient.Do(req)
+	resp, err := c.httpClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
