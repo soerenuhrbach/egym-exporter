@@ -1,7 +1,6 @@
 package exporter
 
 import (
-	"slices"
 	"strings"
 
 	"github.com/prometheus/client_golang/prometheus"
@@ -19,8 +18,6 @@ var (
 		append(labels, bodyLabels...),
 		nil,
 	)
-
-	validUnits = []string{"PERCENT", "PERCENTS", "KG", "LITER", "ANGLE", "KJ", "CM"}
 )
 
 func (e *EgymExporter) describeBodyMetrics(ch chan<- *prometheus.Desc) {
@@ -39,25 +36,14 @@ func (e *EgymExporter) collectBodyMetrics(ch chan<- prometheus.Metric) {
 			continue
 		}
 
-		var unit string
-		metricNamePartials := strings.Split(m.Type, "_")
-
-		for i, p := range metricNamePartials {
-			if slices.Contains(validUnits, p) {
-				metricNamePartials = slices.Delete(metricNamePartials, i, i+1)
-				unit = p
-				break
-			}
-		}
-
-		metricNameWithoutUnit := strings.Join(metricNamePartials, "_")
+		name, unit := parseUnitAndNameFromMetricType(m.Type)
 
 		ch <- prometheus.MustNewConstMetric(
 			bodyMetric,
 			prometheus.CounterValue,
 			m.Value,
 			e.client.Username,
-			metricNameWithoutUnit,
+			name,
 			m.Source,
 			m.SourceLabel,
 			unit,

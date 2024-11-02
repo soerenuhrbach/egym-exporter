@@ -110,8 +110,13 @@ docker run \
 |egym_activity_maintain_points|Amount of required activity points to maintain the activity level|
 |egym_body_metrics|Various metrics about the body like BMI, muscles or fat.|
 |egym_strength_metrics|Strength metrics about various muscles and muscle groups.|
+|egym_flexibility_metrics|Flexibility metrics about different body parts like neck or hips.|
 
 ## Release Notes
+
+### 0.5.0
+
+Added flexibility metrics about different body parts like neck or hips.
 
 ### 0.4.0
 
