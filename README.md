@@ -108,11 +108,16 @@ docker run \
 |egym_activity_points|Amount of activity points within the current period|
 |egym_activity_points_goal|Amount of activity points to reach the next activity level|
 |egym_activity_maintain_points|Amount of required activity points to maintain the activity level|
-|egym_body_metrics|Various metrics about the body like BMI, muscles or fat.|
-|egym_strength_metrics|Strength metrics about various muscles and muscle groups.|
-|egym_flexibility_metrics|Flexibility metrics about different body parts like neck or hips.|
+|egym_body|Various metrics about the body like BMI, muscles or fat.|
+|egym_strength|Strength metrics about various muscles and muscle groups.|
+|egym_flexibility|Flexibility metrics about different body parts like neck or hips.|
+|egym_muscle_imbalance|Proportions and (im)balances of different muscle pairs.|
 
 ## Release Notes
+
+### 0.6.0
+
+Added muscle imbalance metrics.
 
 ### 0.5.0
 
