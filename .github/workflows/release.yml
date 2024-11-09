@@ -12,7 +12,7 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
   BINARY_NAME: 'egym_exporter'
-  GO_VERSION: 1.23.2
+  GO_VERSION: 1.23.3
 
 jobs:
   release-docker:
