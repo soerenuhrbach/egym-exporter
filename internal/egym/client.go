@@ -20,8 +20,8 @@ type EgymClient struct {
 	userId         string
 	cookies        string
 	defaultHeaders map[string]string
-	loginUrl       string
 	apiUrl         string
+	brandApiUrl    string
 
 	httpClient *http.Client
 }
@@ -42,9 +42,9 @@ func NewEgymClient(brand, username, password string) (*EgymClient, error) {
 			"x-np-app-version": "3.11",
 			"Accept":           "application/json",
 		},
-		loginUrl:   fmt.Sprintf("https://%s.netpulse.com/np/exerciser/login", brand),
-		apiUrl:     "https://mobile-api.int.api.egym.com",
-		httpClient: httpClient,
+		brandApiUrl: fmt.Sprintf("https://%s.netpulse.com", brand),
+		apiUrl:      "https://mobile-api.int.api.egym.com",
+		httpClient:  httpClient,
 	}
 	loggedIn, err := c.login()
 	if err != nil || !loggedIn {
@@ -62,7 +62,8 @@ func (c *EgymClient) login() (bool, error) {
 	hasLogin := c.userId != ""
 	data.Set("relogin", fmt.Sprintf("%t", hasLogin))
 
-	req, err := http.NewRequest("POST", c.loginUrl, strings.NewReader(data.Encode()))
+	loginUrl := fmt.Sprintf("%s/np/exerciser/login", c.brandApiUrl)
+	req, err := http.NewRequest("POST", loginUrl, strings.NewReader(data.Encode()))
 	if err != nil {
 		return false, err
 	}

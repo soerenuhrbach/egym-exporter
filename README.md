@@ -112,8 +112,20 @@ docker run \
 |egym_strength|Strength metrics about various muscles and muscle groups.|
 |egym_flexibility|Flexibility metrics about different body parts like neck or hips.|
 |egym_muscle_imbalance|Proportions and (im)balances of different muscle pairs.|
+|egym_exercise_activity_points|Collected activity points of a specific exercise|
+|egym_exercise_activity_distance|Distance left behind with the specific exercise|
+|egym_exercise_activity_duration|Duration of a specific exercise|
+|egym_exercise_activity_calories|Burned calories with a specific exercise|
+|egym_exercise_average_speed|Average speed within a specific exercise|
+|egym_exercise_sets|Number of sets within a specific exercise|
+|egym_exercise_reps|number of reps over all sets of a specific exercise|
+|egym_exercise_weight_total|Total weight across all reps of all sets of the exercise|
 
 ## Release Notes
+
+### 0.7.0
+
+Added metrics about exercises. 
 
 ### 0.6.0
 

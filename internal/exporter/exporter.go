@@ -22,6 +22,7 @@ func (e *EgymExporter) Describe(ch chan<- *prometheus.Desc) {
 	e.describeStrengthMetrics(ch)
 	e.describeFlexibilityMetrics(ch)
 	e.describeMuscleImbalanceMetrics(ch)
+	e.describeExerciseMetrics(ch)
 }
 
 func (e *EgymExporter) Collect(ch chan<- prometheus.Metric) {
@@ -31,6 +32,7 @@ func (e *EgymExporter) Collect(ch chan<- prometheus.Metric) {
 	e.collectStrengthMetrics(ch)
 	e.collectFlexibilityMetrics(ch)
 	e.collectMuscleImbalanceMetrics(ch)
+	e.collectExerciseMetrics(ch)
 }
 
 func NewEgymExporter(client *egym.EgymClient) *EgymExporter {
