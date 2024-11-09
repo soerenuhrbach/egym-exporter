@@ -31,6 +31,10 @@ func (e *EgymExporter) collectFlexibilityMetrics(ch chan<- prometheus.Metric) {
 
 		name, unit := parseUnitAndNameFromMetricType(m.Type)
 
+		if unit == "" {
+			continue
+		}
+
 		ch <- prometheus.MustNewConstMetric(
 			flexibilityMetric,
 			prometheus.GaugeValue,
