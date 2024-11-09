@@ -1,0 +1,1926 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Dashboard to display data collected via EGYM ",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 19,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 6,
+      "panels": [],
+      "title": "Age",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ce2qqhn08ie4gf"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "max": 80,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "Years"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 22,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.4.0-78571",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ce2qqhn08ie4gf"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "exemplar": false,
+          "expr": "egym_bio_age_total{user=\"$user\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "Total",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ce2qqhn08ie4gf"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "exemplar": false,
+          "expr": "egym_bio_age_muscles{user=\"$user\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "Muscles",
+          "range": true,
+          "refId": "B",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ce2qqhn08ie4gf"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "exemplar": false,
+          "expr": "egym_bio_age_cardio{user=\"$user\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "Cardio",
+          "range": true,
+          "refId": "C",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ce2qqhn08ie4gf"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "exemplar": false,
+          "expr": "egym_bio_age_metabolic{user=\"$user\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "Metabolic",
+          "range": true,
+          "refId": "D",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ce2qqhn08ie4gf"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "exemplar": false,
+          "expr": "egym_bio_age_flexibility{user=\"$user\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "Flexibility",
+          "range": true,
+          "refId": "E",
+          "useBackend": false
+        }
+      ],
+      "title": "Total",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "id": 14,
+      "panels": [],
+      "title": "Muscles",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ce2qqhn08ie4gf"
+      },
+      "description": "Display (Im)balances for different muscle pairs",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "neutral": 5000
+          },
+          "fieldMinMax": true,
+          "mappings": [],
+          "max": 10000,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 3000
+              },
+              {
+                "color": "green",
+                "value": 4000
+              },
+              {
+                "color": "#EAB839",
+                "value": 6000
+              },
+              {
+                "color": "red",
+                "value": 7000
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SHOULDER__LATS"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Shoulder - Lats"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CHEST__LATS"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Chest - Lats"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "RIGHT_GLUTEUS__LEFT_GLUTEUS"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Gluteus (left - right)"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ABS__LOWER_BACK"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Abs - Lower Back"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "INNER_HIPS__OUTER_HIPS"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Inner Hips - Outer Hips"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "HAMSTRING__QUADRICEPS"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Hamstring - Quadriceps"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CHEST__UPPER_BACK"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Chest - Upper Back"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 12,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto",
+        "text": {
+          "titleSize": 16,
+          "valueSize": 24
+        }
+      },
+      "pluginVersion": "11.4.0-78571",
+      "targets": [
+        {
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "exemplar": false,
+          "expr": "egym_muscle_imbalance{user=\"$user\"}",
+          "format": "time_series",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "{{antagonist_muscle}}__{{agonist_muscle}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Imbalances",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "uid": "ce2qqhn08ie4gf"
+      },
+      "description": "Muscle strength measured by different exercises",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "masskg"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "GLUTEUS"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Gluteus"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "OUTER_HIPS"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Outer Hips"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "INNER_HIPS"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Inner Hips"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ABS"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Abs"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "LOWER_BACK"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Back"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "QUADRICEPS"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Quadriceps"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "HAMSTRING"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Hamstring"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "LATS"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lats"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CHEST"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Chest"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "UPPER_BACK"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Back"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SHOULDER"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Shoulder"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 15
+      },
+      "id": 11,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.4.0-78571",
+      "targets": [
+        {
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "egym_strength{user=\"$user\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "legendFormat": "{{muscle}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Strengths",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ce2qqhn08ie4gf"
+      },
+      "description": "Amount of muscle mass by different muscle (groups)",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 37,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "masskg"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SEGMENTAL_MUSCLE_LEFT_ARM"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Arm (left)"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SEGMENTAL_MUSCLE_LEFT_LEG"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Leg (left)"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SEGMENTAL_MUSCLE_RIGHT_ARM"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Arm (right)"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SEGMENTAL_MUSCLE_RIGHT_LEG"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Leg (right)"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SEGMENTAL_MUSCLE_TRUNK"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Trunk"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SKELETAL_MUSCLE_MASS"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 15
+      },
+      "id": 17,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "11.4.0-78571",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ce2qqhn08ie4gf"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "egym_body{user=\"$user\", unit=\"KG\", type=~\"SEGMENTAL_MUSCLE_LEFT_ARM|SEGMENTAL_MUSCLE_LEFT_LEG|SEGMENTAL_MUSCLE_RIGHT_ARM|SEGMENTAL_MUSCLE_RIGHT_LEG|SEGMENTAL_MUSCLE_TRUNK|SKELETAL_MUSCLE_MASS\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "{{type}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Mass",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": 15,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ce2qqhn08ie4gf"
+          },
+          "description": "Weight compensation",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 37,
+                "gradientMode": "opacity",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "fieldMinMax": false,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "masskg"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "BODY_FAT_MASS"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Fat mass"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "FAT_FREE_MASS"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Fat free mass"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "WEIGHT"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Total weight"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 12,
+            "x": 0,
+            "y": 28
+          },
+          "id": 9,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.4.0-78571",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "ce2qqhn08ie4gf"
+              },
+              "disableTextWrap": false,
+              "editorMode": "builder",
+              "expr": "egym_body{user=\"$user\", type=~\"WEIGHT|BODY_FAT_MASS|FAT_FREE_MASS\"}",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
+              "instant": false,
+              "legendFormat": "{{type}}",
+              "range": true,
+              "refId": "A",
+              "useBackend": false
+            }
+          ],
+          "title": "Weight",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ce2qqhn08ie4gf"
+          },
+          "description": "Fat mass composition",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 37,
+                "gradientMode": "opacity",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "fieldMinMax": false,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "masskg"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "BODY_FAT_MASS"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Total"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "SEGMENTAL_FAT_LEFT_ARM"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Arm (left)"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "SEGMENTAL_FAT_LEFT_LEG"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Leg (left)"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "SEGMENTAL_FAT_RIGHT_ARM"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Arm (right)"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "SEGMENTAL_FAT_RIGHT_LEG"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Leg (right)"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "SEGMENTAL_FAT_TRUNK"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Trunk"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 12,
+            "x": 12,
+            "y": 28
+          },
+          "id": 18,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.4.0-78571",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "ce2qqhn08ie4gf"
+              },
+              "disableTextWrap": false,
+              "editorMode": "builder",
+              "expr": "egym_body{user=\"$user\", unit=\"KG\", type=~\"BODY_FAT_MASS|SEGMENTAL_FAT_LEFT_ARM|SEGMENTAL_FAT_LEFT_LEG|SEGMENTAL_FAT_RIGHT_ARM|SEGMENTAL_FAT_RIGHT_LEG|SEGMENTAL_FAT_TRUNK\"}",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
+              "instant": false,
+              "legendFormat": "{{type}}",
+              "range": true,
+              "refId": "A",
+              "useBackend": false
+            }
+          ],
+          "title": "Fat mass",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ce2qqhn08ie4gf"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 37,
+                "gradientMode": "opacity",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "fieldMinMax": false,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "litre"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "BODY_WATER"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Total"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "EXTRA_CELLULAR_WATER"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Extra cellular"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "INTRA_CELLULAR_WATER"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Intra cellular"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 12,
+            "x": 0,
+            "y": 38
+          },
+          "id": 19,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.4.0-78571",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "ce2qqhn08ie4gf"
+              },
+              "disableTextWrap": false,
+              "editorMode": "builder",
+              "expr": "egym_body{user=\"$user\", type=~\"EXTRA_CELLULAR_WATER|INTRA_CELLULAR_WATER|BODY_WATER\", unit=\"LITER\"}",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
+              "instant": false,
+              "legendFormat": "{{type}}",
+              "range": true,
+              "refId": "A",
+              "useBackend": false
+            }
+          ],
+          "title": "Water",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ce2qqhn08ie4gf"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "BODY_PHASE"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Body Phase"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "VISCERAL_FAT_RATING"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Visceral Fat Rating"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "BMI"
+                },
+                "properties": [
+                  {
+                    "id": "custom.axisPlacement",
+                    "value": "right"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 12,
+            "x": 12,
+            "y": 38
+          },
+          "id": 20,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.4.0-78571",
+          "targets": [
+            {
+              "disableTextWrap": false,
+              "editorMode": "builder",
+              "expr": "egym_body{user=\"$user\", type=~\"BODY_PHASE|VISCERAL_FAT_RATING\"}",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
+              "legendFormat": "{{type}}",
+              "range": true,
+              "refId": "A",
+              "useBackend": false
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "ce2qqhn08ie4gf"
+              },
+              "disableTextWrap": false,
+              "editorMode": "builder",
+              "expr": "egym_body{user=\"$user\", type=~\"BMI\"}",
+              "fullMetaSearch": false,
+              "hide": false,
+              "includeNullMetadata": true,
+              "legendFormat": "{{type}}",
+              "range": true,
+              "refId": "B",
+              "useBackend": false
+            }
+          ],
+          "title": "Others",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Metabolic",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 16,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ce2qqhn08ie4gf"
+          },
+          "description": "Flexibility based on measured maximum rotation angles of different muscles",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "degree"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "CHEST_EXTENSION_LEFT"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Chest (left)"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "CHEST_EXTENSION_RIGHT"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Chest (right)"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "HIP_EXTENSION_LEFT"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Hip (left)"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "NECK_LATERAL_FLEXION_RIGHT"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Neck (right)"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "HAMSTRING_EXTENSION_LEFT"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Hamstring (left)"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "HAMSTRING_EXTENSION_RIGHT"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Hamstring (right)"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "HIP_EXTENSION_RIGHT"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Hip (right)"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "NECK_LATERAL_FLEXION_LEFT"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Neck (left)"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "TORSO_LATERAL_FLEXION_LEFT"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Torso (left)"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "TORSO_LATERAL_FLEXION_RIGHT"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Torso (right)"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 12,
+            "w": 24,
+            "x": 0,
+            "y": 29
+          },
+          "id": 13,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "11.4.0-78571",
+          "targets": [
+            {
+              "disableTextWrap": false,
+              "editorMode": "code",
+              "expr": "egym_flexibility{user=\"$user\", unit!=\"\"}",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
+              "legendFormat": "{{type}}",
+              "range": true,
+              "refId": "A",
+              "useBackend": false
+            }
+          ],
+          "title": "Flexibility",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Flexibility",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
+      "id": 8,
+      "panels": [
+        {
+          "datasource": {
+            "type": "retrodaredevil-wildgraphql-datasource",
+            "uid": "ce02fsh20aeioe"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "fillOpacity": 60,
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineWidth": 1
+              },
+              "fieldMinMax": false,
+              "mappings": [
+                {
+                  "options": {
+                    "false": {
+                      "color": "green",
+                      "index": 1,
+                      "text": "Yes"
+                    },
+                    "true": {
+                      "color": "red",
+                      "index": 0,
+                      "text": "No"
+                    }
+                  },
+                  "type": "value"
+                }
+              ],
+              "noValue": "No",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "bool_yes_no"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 24,
+            "x": 0,
+            "y": 7
+          },
+          "id": 7,
+          "options": {
+            "colWidth": 0.95,
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "rowHeight": 0.9,
+            "showValue": "never",
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.4.0-78571",
+          "targets": [
+            {
+              "datasource": {
+                "type": "retrodaredevil-wildgraphql-datasource",
+                "uid": "ce02fsh20aeioe"
+              },
+              "parsingOptions": [
+                {
+                  "dataPath": "fitness.workouts",
+                  "labelOptions": [],
+                  "timeFields": [
+                    {
+                      "timePath": "endDate"
+                    },
+                    {
+                      "timePath": "dateToGroup"
+                    }
+                  ]
+                }
+              ],
+              "queryText": "query ($from: Date!, $to: Date!) {\n  fitness {\n    workouts(startDate: $from, endDate: $to) {\n      endDate\n      dateToGroup: endDate\n      exercises {\n        __typename\n      }\n    }\n\t}\n}\n",
+              "refId": "A"
+            }
+          ],
+          "title": "",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "HasNoTraining",
+                "mode": "reduceRow",
+                "reduce": {
+                  "include": [
+                    "exercises.1.__typename",
+                    "exercises.2.__typename",
+                    "exercises.4.__typename",
+                    "exercises.3.__typename"
+                  ],
+                  "reducer": "allIsNull"
+                }
+              }
+            },
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "dateToGroup": false,
+                  "exercises.0.__typename": true,
+                  "exercises.1.__typename": true,
+                  "exercises.10.__typename": true,
+                  "exercises.2.__typename": true,
+                  "exercises.3.__typename": true,
+                  "exercises.4.__typename": true,
+                  "exercises.5.__typename": true,
+                  "exercises.6.__typename": true,
+                  "exercises.7.__typename": true,
+                  "exercises.8.__typename": true,
+                  "exercises.9.__typename": true
+                },
+                "includeByName": {},
+                "indexByName": {},
+                "renameByName": {
+                  "HasTraining": ""
+                }
+              }
+            },
+            {
+              "id": "formatTime",
+              "options": {
+                "outputFormat": "MM-DD-YYYY",
+                "timeField": "dateToGroup",
+                "useTimezone": true
+              }
+            },
+            {
+              "id": "sortBy",
+              "options": {
+                "fields": {},
+                "sort": [
+                  {
+                    "field": "endDate"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "groupBy",
+              "options": {
+                "fields": {
+                  "HasNoTraining": {
+                    "aggregations": [
+                      "firstNotNull"
+                    ],
+                    "operation": "aggregate"
+                  },
+                  "HasTraining": {
+                    "aggregations": [
+                      "lastNotNull"
+                    ],
+                    "operation": "aggregate"
+                  },
+                  "dateToGroup": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "endDate": {
+                    "aggregations": [
+                      "lastNotNull"
+                    ],
+                    "operation": "aggregate"
+                  }
+                }
+              }
+            },
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "dateToGroup": true,
+                  "endDate (lastNotNull)": false
+                },
+                "includeByName": {},
+                "indexByName": {},
+                "renameByName": {
+                  "HasNoTraining (firstNotNull)": " ",
+                  "HasNoTraining (lastNotNull)": "HasNoTraining",
+                  "HasTraining (lastNotNull)": "Training",
+                  "dateToGroup": "",
+                  "endDate (lastNotNull)": "Date"
+                }
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "status-history"
+        }
+      ],
+      "title": "Trainings",
+      "type": "row"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 40,
+  "tags": [
+    "egym"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "mail@soerenuhrbach.de",
+          "value": "mail@soerenuhrbach.de"
+        },
+        "definition": "label_values(egym_bio_age_total,user)",
+        "description": "",
+        "label": "User",
+        "name": "user",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(egym_bio_age_total,user)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "80",
+          "value": "80"
+        },
+        "hide": 2,
+        "name": "maxAge",
+        "query": "80",
+        "skipUrlSync": true,
+        "type": "constant"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "EGYM Fitness",
+  "uid": "ee02i1i1ix8n4f",
+  "version": 51,
+  "weekStart": ""
+}
